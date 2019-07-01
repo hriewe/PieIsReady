@@ -27,14 +27,14 @@ driver.get(url)
 
 quantity = driver.find_element_by_class_name('inventoryCnt')
 
-userList = []
+meAndTheBoys = []
 
 with open('quantity.txt', 'r+') as db:
       if quantity in db.read():
         sys.exit()
       else:
         db.write(quantity)
-        for number in userList:
+        for number in meAndTheBoys:
           message = client.messages \
             .create(
             body=quantity,
