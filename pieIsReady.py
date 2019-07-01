@@ -21,7 +21,7 @@ client = Client(account_sid, auth_token)
 options = Options()
 options.headless = True
 
-url = ''
+url = 'https://www.microcenter.com/product/608187/4-model-b-4gb?src=raspberrypi'
 driver = webdriver.Firefox(options=options)
 driver.get(url)
 
