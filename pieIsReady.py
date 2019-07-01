@@ -24,3 +24,20 @@ options.headless = True
 url = ''
 driver = webdriver.Firefox(options=options)
 driver.get(url)
+
+quantity = driver.find_element_by_class_name('inventoryCnt')
+
+userList = []
+
+with open('quantity.txt', 'r+') as db:
+      if quantity in db.read():
+        sys.exit()
+      else:
+        db.write(quantity)
+        for number in userList:
+          message = client.messages \
+            .create(
+            body=quantity,
+            from_='',
+            to=number
+            )
