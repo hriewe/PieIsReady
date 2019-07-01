@@ -7,9 +7,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
-import requests
 from bs4 import BeautifulSoup
-import time
 from twilio.rest import Client
 
 # Twilio account credentials
@@ -25,7 +23,11 @@ url = 'https://www.microcenter.com/product/608187/4-model-b-4gb?src=raspberrypi'
 driver = webdriver.Firefox(options=options)
 driver.get(url)
 
-quantity = driver.find_element_by_class_name('inventoryCnt')
+html = driver.page_source
+
+soup = BeautifulSoup(html, features="lxml")
+
+quantity = soup.find_all("div", class_="inventoryCnt")
 
 meAndTheBoys = []
 
