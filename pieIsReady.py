@@ -9,6 +9,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 from twilio.rest import Client
+import sys
 
 # Twilio account credentials
 account_sid = ''
@@ -27,7 +28,7 @@ html = driver.page_source
 
 soup = BeautifulSoup(html, features="lxml")
 
-quantity = soup.find_all("div", class_="inventoryCnt")
+quantity = soup.find("span", class_="inventoryCnt").get_text()
 
 meAndTheBoys = []
 
